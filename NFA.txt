@@ -1,0 +1,49 @@
+f=open("citire.txt")
+n=int(f.readline())
+m=int(f.readline())
+v=f.readline()
+v=v[:-1].split(" ")
+v.append('$')
+q0=f.readline()
+q0=q0[:-1]
+k=int(f.readline())
+b=f.readline()
+b=b.split(" ")
+q=[]
+for i in range(len(b)):
+    q.append(int(b[i]))
+l=int(f.readline())
+a=[]
+for i in range(l):
+    x=f.readline()
+    x=x[:-1].split(" ")
+    a.append(x)
+cuv=f.readline()
+cuv=cuv[:-1].split(" ")
+j=0
+x=[q0]
+while j<len(cuv):
+    for k in range(len(x)):
+        for i in range(len(a)):
+            if j<len(cuv)   and x[k]==a[i][0] and cuv[j]==a[i][1]:
+                y=a[i][2]
+                j+=1
+                x.append(y)
+        if i>len(a):
+            print("Cuvantul nu este acceptat")
+            break
+    if i>len(a):
+        break
+    x = x[1:]
+if j==len(cuv):
+    ok=0
+    for i in q:
+        for k in x:
+            if int(k)==i:
+                print("Cuvant acceptat")
+                ok = 1
+                break
+        if ok==1:
+            break
+    else:
+        print("Cuvantul nu este acceptat")
