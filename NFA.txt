@@ -1,3 +1,4 @@
+import copy
 f=open("citire.txt")
 n=int(f.readline())
 m=int(f.readline())
@@ -18,24 +19,29 @@ for i in range(l):
     x=f.readline()
     x=x[:-1].split(" ")
     a.append(x)
-cuv=f.readline()
-cuv=cuv[:-1].split(" ")
+b=f.readline()
+cuv=[]
+for i in b:
+    cuv.append(i)
 j=0
 x=[q0]
 while j<len(cuv):
-    for k in range(len(x)):
+    y=[]
+    for k in x:
         for i in range(len(a)):
-            if j<len(cuv)   and x[k]==a[i][0] and cuv[j]==a[i][1]:
-                y=a[i][2]
-                j+=1
-                x.append(y)
-        if i>len(a):
-            print("Cuvantul nu este acceptat")
-            break
-    if i>len(a):
+            if a[i][1] == '$' and k==a[i][0]:
+                x.append(a[i][2])
+                y.append(a[i][2])
+            if j<len(cuv)   and k==a[i][0] and cuv[j]==a[i][1]:
+                y.append(a[i][2])
+    if y==[]:
+        print("Cuvantul nu este acceptat")
         break
-    x = x[1:]
-if j==len(cuv):
+    else:
+        x=y.copy()
+
+    j += 1
+else:
     ok=0
     for i in q:
         for k in x:
