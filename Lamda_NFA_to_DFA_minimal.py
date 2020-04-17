@@ -303,11 +303,15 @@ def pas3(z):
     return z
 def afis(z):
     print("Numarul de stari:",z.n)
-    print("Numarul de literea ale afabetului:",z.m)
+    print("Numarul de litere ale afabetului:",z.m)
     print("Literele sunt:",z.v)
     print("Starea de inceput:",z.q0)
     print("Starea de final:",z.q)
-    print("Numarul de tranzitii",len(z.nod))
+    k=0
+    for i in z.nod:
+        for j in z.nod[i]:
+            k+=1
+    print("Numarul de tranzitii",k)
     print("Tranzitiile sunt :")
     for i in z.nod:
         for j in z.nod[i]:
@@ -316,8 +320,6 @@ f=open("date.in")
 z=automat(0,0,[],'0',[],{})
 citire(z)
 z=pas1(z)
-afis(z)
 z=pas2(z)
-afis(z)
 z=pas3(z)
 afis(z)
